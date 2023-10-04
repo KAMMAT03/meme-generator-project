@@ -1,5 +1,12 @@
 import React from "react";
+import Nav from "./components/Nav";
+import Meme from "./components/Meme";
 
 export default function App(){
-    return <h1>Hello world!</h1>
+    return (
+        <div>
+            <Nav />
+            <Meme />
+        </div>
+    )
 }
