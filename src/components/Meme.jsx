@@ -2,13 +2,19 @@ import React from "react";
 import memesData from "../memesData";
 
 export default function Meme(){
-    const [imgUrl, setImgUrl] = React.useState('');
+    const [memeObj, setMemeObj] = React.useState({
+        topText: 'text',
+        bottomText: 'text bot',
+        imgUrl: ''
+    });
+
+    const[allImages, setAllImages] = React.useState(memesData.data.memes);
 
     let getMemeImg = () => {
-        const length = memesData.data.memes.length;
+        const length = allImages.length;
         const randomNum = Math.floor(Math.random() * length);
         
-        setImgUrl(() => [memesData.data.memes[randomNum].url]);
+        setMemeObj(prev => ({...prev, imgUrl: allImages[randomNum].url}));
     }
 
     return (
@@ -21,7 +27,7 @@ export default function Meme(){
                 <button onClick={getMemeImg} className="form-button">Get a new meme image 🖼</button>
             </div>
             <div className="meme-container">
-                <img className="meme-img" src={imgUrl} alt="" />
+                <img className="meme-img" src={memeObj.imgUrl} alt="" />
             </div>
         </div>
     )
