@@ -2,7 +2,7 @@ import React from "react";
 import memesData from "../memesData";
 
 export default function Meme(){
-    const [imgUrl, setImgUrl] = React.useState();
+    const [imgUrl, setImgUrl] = React.useState('');
 
     let getMemeImg = () => {
         const length = memesData.data.memes.length;
@@ -13,12 +13,16 @@ export default function Meme(){
 
     return (
         <div className="meme">
-            <div className="meme-inputs">
-                <input className="meme-input" type="text" placeholder="Top text"/>
-                <input className="meme-input" type="text" placeholder="Bottom text"/>
+            <div className="form">
+                <div className="form-inputs">
+                    <input className="form-input" type="text" placeholder="Top text"/>
+                    <input className="form-input" type="text" placeholder="Bottom text"/>
+                </div>
+                <button onClick={getMemeImg} className="form-button">Get a new meme image 🖼</button>
             </div>
-            <button onClick={getMemeImg} className="meme-button">Get a new meme image 🖼</button>
-            <img src={imgUrl} alt="" />
+            <div className="meme-container">
+                <img className="meme-img" src={imgUrl} alt="" />
+            </div>
         </div>
     )
 }
